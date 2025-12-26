@@ -8,7 +8,13 @@ import asyncio
 
 load_dotenv()
 
-bot = Bot(token=os.getenv('BOT_TOKEN'))
+# Получаем токен из переменных окружения
+BOT_TOKEN = os.getenv('BOT_TOKEN')
+
+if not BOT_TOKEN:
+    raise ValueError("BOT_TOKEN не найден!")
+
+bot = Bot(token=BOT_TOKEN)
 dp = Dispatcher()
 
 # Хранение последней использованной картинки
